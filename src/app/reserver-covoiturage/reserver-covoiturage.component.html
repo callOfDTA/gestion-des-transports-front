@@ -1,0 +1,21 @@
+<h1>
+ Réserver un véhicule
+</h1>
+
+<p>Critères</p>
+
+<label>Adresse de départ : </label><input type="text" id="adresseDepart">
+<label>Adresse de destination : </label><input type="text" id="adresseArrivee">
+<label>Date de départ : </label><input type="date" id="dateDepart">
+
+<table>
+<tr *ngFor="let annonce in annonces">
+<td >{{annonce.heure}}</td>
+<td >{{annonce.adresseDepart}}</td>
+<td >{{annonce.adresseArriver}}</td>
+<td >{{annonce.vehicule}}</td>
+<td >{{annonce.conducteur}}</td>
+<td >{{annonce.placeDispo}}</td>
+<td ><button >Réserver</button></td>
+
+</table>
