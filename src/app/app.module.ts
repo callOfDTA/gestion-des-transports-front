@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { ReserverCovoiturageComponent } from './reserver-covoiturage/reserver-covoiturage.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, 
+    ReserverCovoiturageComponent
   ],
   imports: [
     BrowserModule

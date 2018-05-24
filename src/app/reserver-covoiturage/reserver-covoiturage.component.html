@@ -9,13 +9,18 @@
 <label>Date de départ : </label><input type="date" id="dateDepart">
 
 <table>
-<tr *ngFor="let annonce in annonces">
+  <tbody>
+    <tr>
+      <th>Date/Heure</th><th>Départ</th><th>Destination</th><th>Véhicule</th><th>Chauffeur</th><th>Places dispos</th>
+    </tr>
+<tr *ngFor="let annonce of annonces">
 <td >{{annonce.heure}}</td>
 <td >{{annonce.adresseDepart}}</td>
 <td >{{annonce.adresseArriver}}</td>
-<td >{{annonce.vehicule}}</td>
-<td >{{annonce.conducteur}}</td>
+<td >{{annonce.vehicule.marque + " " + annonce.vehicule.modele}}</td>
+<td >{{annonce.conducteur.prenom + " " + annonce.conducteur.nom}}</td>
 <td >{{annonce.placeDispo}}</td>
 <td ><button >Réserver</button></td>
-
+</tr>
+</tbody>
 </table>
