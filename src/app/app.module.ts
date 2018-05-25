@@ -13,6 +13,7 @@ import { MenuComponent } from './menu/menu.component';
 import { InfoUserComponent } from './info-user/info-user.component';
 import { AnnoncesComponent } from './annonces/annonces.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
+import { CreerCovoiturageComponent } from './creer-covoiturage/creer-covoiturage.component';
 
 
 const appRoutes: Routes = [
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
   { path: 'collaborateur/reservations/creer', component: ReserverCovoiturageComponent },
   { path: 'collaborateur/statistiques', component: StatistiqueComponent },
   { path: 'collaborateur/annonces', component:AnnoncesComponent },
+  { path: 'collaborateur/annonces/creer', component:CreerCovoiturageComponent},
   { path: '',   redirectTo: '/', pathMatch: 'full' }
 ]
 
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
     ReserverCovoiturageComponent,
     InfoUserComponent,
     AnnoncesComponent,
-    StatistiqueComponent
+    StatistiqueComponent,
+    CreerCovoiturageComponent
   ],
   imports: [
     BrowserModule,
