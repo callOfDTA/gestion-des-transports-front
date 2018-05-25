@@ -15,7 +15,7 @@ export class ReserverCovoiturageComponent implements OnInit {
   ngOnInit() {
     this.annonces = [];
     let annonce1 = new Annonce();
-    annonce1.placeDispo=1;
+    annonce1.placeDispo=0;
     annonce1.adresseDepart="Gare de Nantes";
     annonce1.adresseArriver="Gare de Saint-Nazaire";
     //annonce1.heure="";
@@ -45,8 +45,8 @@ export class ReserverCovoiturageComponent implements OnInit {
     this.annonces.push(annonce2);
     //console.log(this.annonces[0].heure.toLocaleString);
   }
-  public confirmer(){
-    if(confirm("Êtes-vous sûr de vouloir réserver pour ce covoiturage")) {
+  public confirmer(annonce:Annonce){
+    if(confirm("Départ : \t" + annonce.adresseDepart + "\nArrivée : \t" + annonce.adresseArriver + "\nHeure : \t" + annonce.heure.toLocaleString()  + "\nVoiture : \t" + annonce.vehicule.marque + " " + annonce.vehicule.modele + "\nChauffeur : \t" + annonce.conducteur.prenom + " " + annonce.conducteur.nom + "\nÊtes-vous sûr de vouloir réserver pour ce covoiturage ?")) {
       console.log("Réservation covoiturage confirmée");
     }
   }

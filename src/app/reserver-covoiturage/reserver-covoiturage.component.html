@@ -20,7 +20,7 @@
 <td >{{annonce.vehicule.marque + " " + annonce.vehicule.modele}}</td>
 <td >{{annonce.conducteur.prenom + " " + annonce.conducteur.nom}}</td>
 <td >{{annonce.placeDispo}}</td>
-<td ><button (click)="this.confirmer()">Réserver</button></td>
+<td ><button [disabled]="annonce.placeDispo<=0" (click)="this.confirmer(annonce)">Réserver</button></td>
 </tr>
 </tbody>
 </table>
