@@ -14,13 +14,13 @@
       <th>Date/Heure</th><th>Départ</th><th>Destination</th><th>Véhicule</th><th>Chauffeur</th><th>Places dispos</th>
     </tr>
 <tr *ngFor="let annonce of annonces">
-<td >{{annonce.heure}}</td>
+<td >{{annonce.heure | date : 'dd/MM/yyyy hh:mm'}}</td>
 <td >{{annonce.adresseDepart}}</td>
 <td >{{annonce.adresseArriver}}</td>
 <td >{{annonce.vehicule.marque + " " + annonce.vehicule.modele}}</td>
 <td >{{annonce.conducteur.prenom + " " + annonce.conducteur.nom}}</td>
 <td >{{annonce.placeDispo}}</td>
-<td ><button >Réserver</button></td>
+<td ><button (click)="this.confirmer()">Réserver</button></td>
 </tr>
 </tbody>
 </table>

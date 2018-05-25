@@ -3,7 +3,7 @@ import { Time } from "@angular/common";
 export class Annonce {
     adresseDepart:string;
     adresseArriver:string;
-    heure:DateTimeFormat;
+    heure:Date;
     vehicule:Vehicule;
     conducteur:Personne;
     duree:Time;
