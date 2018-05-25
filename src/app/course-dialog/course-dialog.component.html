@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <h4>Détails du covoiturage :</h4>
+    </div>
+    <div class="row">
+        Départ : {{data.annonce.adresseDepart}}
+    </div>
+    <div class="row">
+        Destination : {{data.annonce.adresseArriver}}
+    </div>
+    <div class="row">
+        Date / heure : {{data.annonce.heure.toLocaleString()}}
+    </div>
+    <div class="row">
+        Véhicule : {{data.annonce.vehicule}}
+    </div>
+    <div class="row">
+        Chauffeur : {{data.annonce.conducteur}}
+    </div>
+    <div class="float-right">
+        <button type="button" (click)="close()" class="btn btn-sm btn-outline-secondary">Fermer</button>
+    </div>
+</div>

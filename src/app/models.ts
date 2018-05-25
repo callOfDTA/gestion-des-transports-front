@@ -1,17 +1,17 @@
 import { Time } from "@angular/common";
 
 export class Annonce {
-    adresseDepart:string;
-    adresseArriver:string;
-    heure:DateTimeFormat;
     vehicule:Vehicule;
     conducteur:Personne;
     duree:Time;
     distance:number;
     placeDispo:number;
+    adresseDepart:string;
+    adresseArriver:string;
+    heure:Date
     constructor(){
-
     }
+    
 }
 
 export enum Categorie {
