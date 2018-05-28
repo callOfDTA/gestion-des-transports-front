@@ -1,1 +1,26 @@
-<h1>Réserver un transport : en cours de développement</h1>
+<h1>
+ Réserver un véhicule
+</h1>
+
+<p>Critères</p>
+
+<label>Adresse de départ : </label><input type="text" id="adresseDepart">
+<label>Adresse de destination : </label><input type="text" id="adresseArrivee">
+<label>Date de départ : </label><input type="date" id="dateDepart">
+
+<table>
+  <tbody>
+    <tr>
+      <th>Date/Heure</th><th>Départ</th><th>Destination</th><th>Véhicule</th><th>Chauffeur</th><th>Places dispos</th>
+    </tr>
+<tr *ngFor="let annonce of annonces">
+<td >{{annonce.heure | date : 'dd/MM/yyyy hh:mm'}}</td>
+<td >{{annonce.adresseDepart}}</td>
+<td >{{annonce.adresseArriver}}</td>
+<td >{{annonce.vehicule.marque + " " + annonce.vehicule.modele}}</td>
+<td >{{annonce.conducteur.prenom + " " + annonce.conducteur.nom}}</td>
+<td >{{annonce.placeDispo}}</td>
+<td ><button [disabled]="annonce.placeDispo<=0" (click)="this.confirmer(annonce)">Réserver</button></td>
+</tr>
+</tbody>
+</table>

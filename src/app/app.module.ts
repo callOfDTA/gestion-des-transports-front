@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppComponent } from './app.component';
 import { ListerAnnonceComponent } from './lister-annonce/lister-annonce.component';
-import { ReserverCovoiturageComponent } from './reserver-covoiturage/reserver-covoiturage.component';
 import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 import { ReservationPipe, HistoriquePipe } from './filter/historique.pipe';
 import { RouterModule, Routes } from '@angular/router';
@@ -14,11 +13,11 @@ import { InfoUserComponent } from './info-user/info-user.component';
 import { AnnoncesComponent } from './annonces/annonces.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
 import { CreerCovoiturageComponent } from './creer-covoiturage/creer-covoiturage.component';
-
+import { ReserverCovoiturageComponent } from './reserver-covoiturage/reserver-covoiturage.component';
 
 const appRoutes: Routes = [
   { path: 'collaborateur/reservations', component: ListerAnnonceComponent },
-  { path: 'collaborateur/reservations/creer', component: ReserverCovoiturageComponent },
+  { path: 'collaborateur/propositions/creer', component: ReserverCovoiturageComponent },
   { path: 'collaborateur/statistiques', component: StatistiqueComponent },
   { path: 'collaborateur/annonces', component:AnnoncesComponent },
   { path: 'collaborateur/annonces/creer', component:CreerCovoiturageComponent},
@@ -33,11 +32,11 @@ const appRoutes: Routes = [
     ReservationPipe,
     HistoriquePipe,
     MenuComponent,
-    ReserverCovoiturageComponent,
     InfoUserComponent,
     AnnoncesComponent,
     StatistiqueComponent,
-    CreerCovoiturageComponent
+    CreerCovoiturageComponent,
+    ReserverCovoiturageComponent
   ],
   imports: [
     BrowserModule,

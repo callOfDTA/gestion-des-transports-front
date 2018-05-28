@@ -44,6 +44,6 @@ export class ListerAnnonceComponent implements OnInit {
   }
 
   creer() {
-    this.router.navigate(['/collaborateur/reservations/creer']);
+    this.router.navigate(['/collaborateur/propositions/creer']);
   }
 }
