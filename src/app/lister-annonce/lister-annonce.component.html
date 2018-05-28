@@ -20,8 +20,8 @@
               <th>Infos</th>
             </tr>
           </thead>
-          <tbody *ngFor="let a of annonces">
-            <tr *ngIf="a | reservation">
+          <tbody *ngFor="let r of reserv">
+            <tr *ngIf="r | reservation">
                 <td>{{a.heure.toLocaleString()}}</td>
                 <td>{{a.adresseDepart}}</td>
                 <td>{{a.adresseArriver}}</td>
@@ -42,8 +42,8 @@
               <th>Infos</th>
             </tr>
           </thead>
-          <tbody *ngFor="let a of annonces | slice:0:5">
-              <tr *ngIf="a | historique">
+          <tbody *ngFor="let r of reserv | slice:0:5">
+              <tr *ngIf="r | historique">
                   <td>{{a.heure.toLocaleString()}}</td>
                   <td>{{a.adresseDepart}}</td>
                   <td>{{a.adresseArriver}}</td>

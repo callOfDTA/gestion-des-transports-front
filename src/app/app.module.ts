@@ -14,6 +14,8 @@ import { AnnoncesComponent } from './annonces/annonces.component';
 import { StatistiqueComponent } from './statistique/statistique.component';
 import { CreerCovoiturageComponent } from './creer-covoiturage/creer-covoiturage.component';
 import { ReserverCovoiturageComponent } from './reserver-covoiturage/reserver-covoiturage.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReservationService } from './services/reservation.service';
 
 const appRoutes: Routes = [
   { path: 'collaborateur/reservations', component: ListerAnnonceComponent },
@@ -42,9 +44,10 @@ const appRoutes: Routes = [
     BrowserModule,
     MatDialogModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ReservationService],
   bootstrap: [AppComponent],
   entryComponents:[CourseDialogComponent]
 })
