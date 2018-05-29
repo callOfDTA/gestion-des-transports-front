@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppComponent } from './app.component';
 import { ListerAnnonceComponent } from './lister-annonce/lister-annonce.component';
 import { CourseDialogComponent } from './course-dialog/course-dialog.component';
-import { ReservationPipe, HistoriquePipe } from './filter/historique.pipe';
+import { ReservationPipe, HistoriquePipe } from './pipe/historique.pipe';
 import { RouterModule, Routes } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
 import { InfoUserComponent } from './info-user/info-user.component';
@@ -16,8 +16,7 @@ import { CreerCovoiturageComponent } from './creer-covoiturage/creer-covoiturage
 import { ReserverCovoiturageComponent } from './reserver-covoiturage/reserver-covoiturage.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReservationService } from './services/reservation.service';
-import { DatePipe } from './filter/date.pipe';
-import { AdressePipe } from './filter/adresse.pipe';
+import { VehiculePipe, PersonnePipe, DatePipe, AdressePipe } from './pipe/format.pipe';
 
 const appRoutes: Routes = [
   { path: 'collaborateur/reservations', component: ListerAnnonceComponent },
@@ -41,8 +40,7 @@ const appRoutes: Routes = [
     StatistiqueComponent,
     CreerCovoiturageComponent,
     ReserverCovoiturageComponent,
-    DatePipe,
-    AdressePipe
+    VehiculePipe, PersonnePipe, DatePipe, AdressePipe
   ],
   imports: [
     BrowserModule,

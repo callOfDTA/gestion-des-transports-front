@@ -3,19 +3,19 @@
         <h4>Détails du covoiturage :</h4>
     </div>
     <div class="row">
-        Départ : {{data.annonce.adresseDepart}}
+        Départ : {{data.annonce.adresseDepart | adresse}}
     </div>
     <div class="row">
-        Destination : {{data.annonce.adresseArriver}}
+        Destination : {{data.annonce.adresseArriver | adresse}}
     </div>
     <div class="row">
-        Date / heure : {{data.annonce.heure.toLocaleString()}}
+        Date / heure : {{data.annonce.heure | date}}
     </div>
     <div class="row">
-        Véhicule : {{data.annonce.vehicule}}
+        Véhicule : {{data.annonce.vehicule | vehicule}}
     </div>
     <div class="row">
-        Chauffeur : {{data.annonce.conducteur}}
+        Chauffeur : {{data.annonce.conducteur | personne}}
     </div>
     <div class="float-right">
         <button type="button" (click)="close()" class="btn btn-sm btn-outline-secondary">Fermer</button>

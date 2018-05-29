@@ -1,5 +1,8 @@
 import { Component, OnInit, Inject, Input} from '@angular/core';
 import { MatDialogRef , MAT_DIALOG_DATA} from '@angular/material';
+import { VehiculePipe } from '../pipe/format.pipe'; 
+import { Annonce } from '../models';
+
 
 @Component({
   selector: 'app-course-dialog',

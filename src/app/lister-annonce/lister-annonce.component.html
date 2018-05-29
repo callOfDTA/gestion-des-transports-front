@@ -25,7 +25,7 @@
                   <td>{{r.heure | date}}</td>
                   <td>{{r.adresseDepart | adresse}} </td>
                   <td>{{r.adresseArriver | adresse }}</td>
-                  <td><button type="button" (click)=detail(a) class="btn">Détails</button>
+                  <td><button type="button" (click)=detail(r) class="btn">Détails</button>
                     <!-- <button type="button" (click)=detail() class="btn btn-danger">Détails</button> -->
                   </td>
               </tr>
@@ -51,7 +51,7 @@
                   <td>{{r.adresseDepart | adresse}} </td>
                   <td>{{r.adresseArriver | adresse }}</td>
                   <!-- <td>{{r.statut}}</td>  -->
-                  <td><button type="button" (click)=detail() class="btn">Détails</button></td>
+                  <td><button type="button" (click)=detail(r) class="btn">Détails</button></td>
               </tr>
           </tbody>
         </table>
