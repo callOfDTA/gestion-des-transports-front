@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Personne } from '../models';
 
 @Component({
@@ -9,11 +9,9 @@ import { Personne } from '../models';
 export class InfoUserComponent implements OnInit {
 
   constructor() { }
-  user:Personne = new Personne();
+  @Input() user:Personne = new Personne();
 
   ngOnInit() {
-    this.user.nom = "Paluchon";
-    this.user.prenom = "Jean-Luc";
   }
 
 }

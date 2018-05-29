@@ -16,6 +16,8 @@ import { CreerCovoiturageComponent } from './creer-covoiturage/creer-covoiturage
 import { ReserverCovoiturageComponent } from './reserver-covoiturage/reserver-covoiturage.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReservationService } from './services/reservation.service';
+import { DatePipe } from './filter/date.pipe';
+import { AdressePipe } from './filter/adresse.pipe';
 
 const appRoutes: Routes = [
   { path: 'collaborateur/reservations', component: ListerAnnonceComponent },
@@ -38,7 +40,9 @@ const appRoutes: Routes = [
     AnnoncesComponent,
     StatistiqueComponent,
     CreerCovoiturageComponent,
-    ReserverCovoiturageComponent
+    ReserverCovoiturageComponent,
+    DatePipe,
+    AdressePipe
   ],
   imports: [
     BrowserModule,

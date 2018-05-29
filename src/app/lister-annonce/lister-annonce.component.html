@@ -20,13 +20,14 @@
               <th>Infos</th>
             </tr>
           </thead>
-          <tbody *ngFor="let r of reserv">
-            <tr *ngIf="r | reservation">
-                <td>{{a.heure.toLocaleString()}}</td>
-                <td>{{a.adresseDepart}}</td>
-                <td>{{a.adresseArriver}}</td>
-                <td><button type="button" (click)=detail(a) class="btn">Détails</button></td>
-            </tr>
+          <tbody *ngFor="let r of reserv | async">
+              <tr *ngIf="r | reservation">
+                  <td>{{r.heure | date}}</td>
+                  <td>{{r.adresseDepart | adresse}} </td>
+                  <td>{{r.adresseArriver | adresse }}</td>
+                  <td><button type="button" (click)=detail(a) class="btn">Détails</button>
+                    <button type="button" (click)=detail() class="btn btn-danger">Détails</button></td>
+              </tr>
           </tbody>
         </table>
 
@@ -39,14 +40,16 @@
               <th>Date / heure</th>
               <th>Départ</th>
               <th>Destination</th>
+              <th>Statut</th>
               <th>Infos</th>
             </tr>
           </thead>
-          <tbody *ngFor="let r of reserv | slice:0:5">
+          <tbody *ngFor="let r of reserv | async | slice:0:5">
               <tr *ngIf="r | historique">
-                  <td>{{a.heure.toLocaleString()}}</td>
-                  <td>{{a.adresseDepart}}</td>
-                  <td>{{a.adresseArriver}}</td>
+                  <td>{{r.heure | date}}</td>
+                  <td>{{r.adresseDepart | adresse}} </td>
+                  <td>{{r.adresseArriver | adresse }}</td>
+                  <td>{{r.statut}}</td> 
                   <td><button type="button" (click)=detail() class="btn">Détails</button></td>
               </tr>
           </tbody>

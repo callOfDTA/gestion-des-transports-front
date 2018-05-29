@@ -14,10 +14,10 @@ export class ReserverCovoiturageComponent implements OnInit {
 
   ngOnInit() {
     this.annonces = [];
-    let annonce1 = new Annonce();
+    let annonce1;
     annonce1.placeDispo=0;
-    annonce1.adresseDepart="Gare de Nantes";
-    annonce1.adresseArriver="Gare de Saint-Nazaire";
+    // annonce1.adresseDepart="Gare de Nantes";
+    // annonce1.adresseArriver="Gare de Saint-Nazaire";
     //annonce1.heure="";
     let conducteur1 = new Personne();
     conducteur1.prenom="François";
@@ -28,10 +28,10 @@ export class ReserverCovoiturageComponent implements OnInit {
     vehicule1.modele="A6";
     annonce1.heure = new Date("09/03/2018 08:30");
     annonce1.vehicule=vehicule1;
-    let annonce2 = new Annonce();
+    let annonce2;
     annonce2.placeDispo=2;
-    annonce2.adresseDepart="Gare de Nantes";
-    annonce2.adresseArriver="Gare de Saint-Nazaire";
+    // annonce2.adresseDepart="Gare de Nantes";
+    // annonce2.adresseArriver="Gare de Saint-Nazaire";
     annonce2.heure = new Date("10/03/2018 10:00:00"); 
     let conducteur2 = new Personne();
     conducteur2.prenom="Paul";

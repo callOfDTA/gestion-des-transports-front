@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Annonce, Personne} from '../models';
 import { MatDialog, MatDialogRef } from "@angular/material";
 import { CourseDialogComponent } from '../course-dialog/course-dialog.component';
 import { ReservationPipe, HistoriquePipe } from '../filter/historique.pipe';
+import { DatePipe } from '../filter/date.pipe';
+import { AdressePipe } from '../filter/adresse.pipe';
 import { Router } from '@angular/router';
 import { ReservationService } from '../services/reservation.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-lister-annonce',
@@ -13,17 +16,16 @@ import { ReservationService } from '../services/reservation.service';
 })
 export class ListerAnnonceComponent implements OnInit {
   user:Personne =  new Personne();
-  reserv:Annonce[] = [];
+  annonce:Annonce;
+
+  reserv:Observable<Annonce[]>;
 
   constructor(private dialog: MatDialog, private router: Router, private _reservationServ: ReservationService) {
   }
 
   ngOnInit() {
-    this.user.matricule = "1234";
-    this._reservationServ.lister(this.user.matricule)
-      .subscribe((r:Annonce[]) => {
-        this.reserv = r;
-      }, err => console.log(err));
+    this.user.matricule = "1234"
+    this.reserv = this._reservationServ.lister(this.user.matricule);
   }
 
   detail(annonce:Annonce): void {

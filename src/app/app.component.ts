@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {environment} from "../environments/environment";
+import { Personne } from './models';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,12 @@ import {environment} from "../environments/environment";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  user:Personne = new Personne();
   apiUrl = environment.apiUrl;
+
+  ngOnInit() {
+    this.user.nom = "Paluchon";
+    this.user.prenom = "Jean-Luc";
+    this.user.matricule = "1234";
+  }
 }
