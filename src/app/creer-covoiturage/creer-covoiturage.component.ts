@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Annonce } from '../models';
 
 @Component({
   selector: 'app-creer-covoiturage',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./creer-covoiturage.component.css']
 })
 export class CreerCovoiturageComponent implements OnInit {
+
+  annonce:Annonce;
+  depart:string;
+  destination:string;
 
   constructor() { }
 
