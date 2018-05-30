@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReservationService } from './services/reservation.service';
 import { VehiculePipe, PersonnePipe, DatePipe, AdressePipe } from './pipe/format.pipe';
 import { GoogleplaceDirective } from './googleplace.directive';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: 'collaborateur/reservations', component: ListerAnnonceComponent },
@@ -48,7 +49,8 @@ const appRoutes: Routes = [
     MatDialogModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ReservationService],
   bootstrap: [AppComponent],
