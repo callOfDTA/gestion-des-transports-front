@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Annonce, Personne, Vehicule} from "../models";
 //
- 
+import {HttpClient} from '@angular/common/http'
 @Component({
   selector: 'app-reserver-covoiturage',
   templateUrl: './reserver-covoiturage.component.html',
@@ -9,11 +9,33 @@ import {Annonce, Personne, Vehicule} from "../models";
 })
 
 export class ReserverCovoiturageComponent implements OnInit {
-  annonces : Annonce[];
-  constructor() { }
+  annonces : Annonce[] = [];
+  constructor(private _http:HttpClient) { }
 
   ngOnInit() {
-    this.annonces = [];
+    this._http.get("http://localhost:8080/annonces")
+      .toPromise()
+      .then((data: any) => {
+            console.log(data);
+            let i =0;
+            //this.annonces[2] = data[0];
+            data.forEach(element => {
+              let a = new Annonce();
+              a.heure= new Date(element.date);
+              a.adresseDepart=element.adresseDepart;
+              a.adresseArriver=element.adresseArriver;
+              let vehicule = new Vehicule();
+              vehicule.marque=element.vehicule.marque;
+              vehicule.modele=element.vehicule.modele;
+              a.vehicule=vehicule;
+              let conducteur = new Personne();
+              conducteur.prenom=element.auteurAnnonce.prenom;
+              conducteur.nom=element.auteurAnnonce.nom;
+              a.conducteur=conducteur;
+              a.placeDispo=element.nombrePlace;
+              this.annonces.push(a);
+            });
+      });
     let annonce1 = new Annonce();
     annonce1.placeDispo=0;
     annonce1.adresseDepart="Gare de Nantes";
