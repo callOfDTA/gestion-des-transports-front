@@ -17,6 +17,7 @@ import { ReserverCovoiturageComponent } from './reserver-covoiturage/reserver-co
 import { HttpClientModule } from '@angular/common/http';
 import { ReservationService } from './services/reservation.service';
 import { VehiculePipe, PersonnePipe, DatePipe, AdressePipe } from './pipe/format.pipe';
+import { GoogleplaceDirective } from './googleplace.directive';
 
 const appRoutes: Routes = [
   { path: 'collaborateur/reservations', component: ListerAnnonceComponent },
@@ -40,7 +41,7 @@ const appRoutes: Routes = [
     StatistiqueComponent,
     CreerCovoiturageComponent,
     ReserverCovoiturageComponent,
-    VehiculePipe, PersonnePipe, DatePipe, AdressePipe
+    VehiculePipe, PersonnePipe, DatePipe, AdressePipe, GoogleplaceDirective
   ],
   imports: [
     BrowserModule,
