@@ -34,15 +34,64 @@
         </div>
       </form>
     </div>
-    <div>
+    <div class="container-fluid">
       <div class="row">
         <h4>Véhicule</h4>
       </div>
+      <form >
+
+          <div class="input-group input-group-sm mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Immatriculation *</span>
+              </div>
+              <input type="text" name="immatriculation" #immmatriculation="ngModel" [(ngModel)]="vehicule.immatriculation" required class="form-control">
+          </div>
+
+          <div class="input-group input-group-sm mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Marque *</span>
+              </div>
+              <input type="text" name="marque" #marque="ngModel" [(ngModel)]="vehicule.marque" required class="form-control">
+              <div *ngIf="marque.dirty  && marque.invalid">La marque est obligatoire.</div>
+          </div>
+
+          <div class="input-group input-group-sm mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Modèle *</span>
+              </div>
+              <input type="text" name="modele" #modele="ngModel" [(ngModel)]="vehicule.modele" required class="form-control">
+              <div *ngIf="modele.dirty  && modele.invalid">Le modèle est obligatoire.</div>
+          </div>
+
+          <div class="input-group input-group-sm mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Nombre de places disponibles *</span>
+              </div>
+              <input type="text" name="placeDispo" #placeDispo="ngModel" [(ngModel)]="vehicule.placeDispo" required minlength="1" maxlength="20" class="form-control">
+              <div *ngIf="placeDispo.dirty  && placeDispo.invalid">Le nombre de places doit être compris entre 1 et 20.</div>
+          </div>
+          <!-- <button class="btn btn-success" type="submit" [disabled]="!newVehicule.valid">Ajouter</button> -->
+      </form>
     </div>
     <div>
       <div class="row">
         <h4>Date et horaire</h4>
       </div>
+      <form (ngSubmit)="submit()" #newAnnonce="ngForm">
+          <div class="input-group input-group-sm mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Date / heure *</span>
+              </div>
+              <input type="date" name="date" #dateDepart="ngModel" [(ngModel)]="date" required class="form-control">
+              <select name="heure" id="heure" #heureDepart="ngModel" [(ngModel)]="heure" required class="form-control">
+                  <option *ngFor="let h of heureTable" [value]="h">{{h}}</option> 
+              </select>
+              <select name="minute" id="minute" #minuteDepart="ngModel" [(ngModel)]="minute" required class="form-control">
+                  <option *ngFor="let m of minuteTable" [value]="h">{{m}}</option> 
+              </select>
+              <div *ngIf="date.dirty  && date.invalid">Le modèle est obligatoire.</div>
+          </div>        
+      </form>
     </div>
   </div>
 
