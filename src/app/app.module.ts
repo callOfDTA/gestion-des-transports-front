@@ -17,6 +17,7 @@ import { ReserverCovoiturageComponent } from './reserver-covoiturage/reserver-co
 import { HttpClientModule } from '@angular/common/http';
 import { ReservationService } from './services/reservation.service';
 import { VehiculePipe, PersonnePipe, DatePipe, AdressePipe } from './pipe/format.pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 const appRoutes: Routes = [
   { path: 'collaborateur/reservations', component: ListerAnnonceComponent },
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
     MatDialogModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [ReservationService],
   bootstrap: [AppComponent],

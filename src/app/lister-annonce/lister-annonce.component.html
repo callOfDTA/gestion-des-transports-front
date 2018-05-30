@@ -45,7 +45,7 @@
               <th>Infos</th>
             </tr>
           </thead>
-          <tbody *ngFor="let r of reserv | async | slice:0:5">
+          <tbody *ngFor="let r of reserv | async | paginate: { itemsPerPage:5, currentPage:p}">
               <tr *ngIf="r | historique">
                   <td>{{r.heure | date}}</td>
                   <td>{{r.adresseDepart | adresse}} </td>
@@ -55,5 +55,6 @@
               </tr>
           </tbody>
         </table>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
       </div>
 </div>

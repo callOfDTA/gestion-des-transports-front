@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {environment} from "../environments/environment";
+import { Component, OnInit } from '@angular/core';
+import { environment } from "../environments/environment";
 import { Personne } from './models';
+import { MenuComponent } from './menu/menu.component';
 
 @Component({
   selector: 'app-root',

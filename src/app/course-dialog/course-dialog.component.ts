@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, Input} from '@angular/core';
 import { MatDialogRef , MAT_DIALOG_DATA} from '@angular/material';
-import { VehiculePipe } from '../pipe/format.pipe'; 
+import { VehiculePipe, AdressePipe } from '../pipe/format.pipe'; 
 import { Annonce } from '../models';
 
 
