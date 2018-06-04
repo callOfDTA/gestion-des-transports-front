@@ -13,7 +13,7 @@
     <tr>
       <th>Date/Heure</th><th>Départ</th><th>Destination</th><th>Véhicule</th><th>Chauffeur</th><th>Places dispos</th>
     </tr>
-<tr *ngFor="let annonce of annonces">
+<tr *ngFor="let annonce of annoncesFiltre">
 <td >{{annonce.heure | date : 'dd/MM/yyyy hh:mm'}}</td>
 <td >{{annonce.adresseDepart}}</td>
 <td >{{annonce.adresseArriver}}</td>

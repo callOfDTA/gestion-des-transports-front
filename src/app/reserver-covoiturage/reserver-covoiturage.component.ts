@@ -10,6 +10,7 @@ import {HttpClient} from '@angular/common/http'
 
 export class ReserverCovoiturageComponent implements OnInit {
   annonces : Annonce[] = [];
+  annoncesFiltre : Annonce[] = [];
   constructor(private _http:HttpClient) { }
 
   ngOnInit() {
@@ -65,8 +66,10 @@ export class ReserverCovoiturageComponent implements OnInit {
     annonce2.vehicule=vehicule2;
     this.annonces.push(annonce1);
     this.annonces.push(annonce2);
+    this.annoncesFiltre=this.annonces;
     //console.log(this.annonces[0].heure.toLocaleString);
-    console.log(this.annonces.filter(a => a.adresseDepart == "Gare de Paris"))
+    //console.log(this.annonces.filter(a => a.adresseDepart == "Gare de Paris"))
+
   }
   public confirmer(annonce:Annonce){
     if(confirm("Départ : \t" + annonce.adresseDepart + "\nArrivée : \t" + annonce.adresseArriver + "\nHeure : \t" + annonce.heure.toLocaleString()  + "\nVoiture : \t" + annonce.vehicule.marque + " " + annonce.vehicule.modele + "\nChauffeur : \t" + annonce.conducteur.prenom + " " + annonce.conducteur.nom + "\nÊtes-vous sûr de vouloir réserver pour ce covoiturage ?")) {
@@ -77,13 +80,16 @@ export class ReserverCovoiturageComponent implements OnInit {
   }
   public filtrerDepart(text:string) {
     console.log("filtrage départ " + text);
-    this.annonces.filter(a => a.adresseDepart == text);
+    this.annoncesFiltre = this.annonces.filter(a => a.adresseDepart == text);
+
   }
   public filtrerArrivee(text:string) {
     console.log("filtrage arrivée " + text);
+    this.annoncesFiltre = this.annonces.filter(a => a.adresseArriver == text);
   }
   public filtrerDate(date:Date) {
     console.log("filtrage date " + date);
+    //this.annonces = this.annonces.filter(a => a.heure == date);
   }
 
 }
