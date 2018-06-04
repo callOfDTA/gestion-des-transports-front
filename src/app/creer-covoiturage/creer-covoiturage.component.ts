@@ -59,6 +59,7 @@ export class CreerCovoiturageComponent implements OnInit {
     this.annonce.conducteur.photo = "jkljlkjlijlkjlj";
     this.annonce.conducteur.role = Role.CHAUFFEUR;
     this.annonce.vehicule.urlImage = "toto";
+    this.annonce.placeDispo = this.annonce.vehicule.nbPlace;
 
     let dialogRef = this.dialog.open(ConfirmationAnnonceDialogComponent, {
       width: '350px', data: { annonce : this.annonce}

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Annonce, Personne, Vehicule} from "../models";
+import { Observable } from 'rxjs';
+import { DatePipe, AdressePipe, VehiculePipe, PersonnePipe} from '../pipe/format.pipe';
 //
- 
+import {HttpClient} from '@angular/common/http'
 @Component({
   selector: 'app-reserver-covoiturage',
   templateUrl: './reserver-covoiturage.component.html',
@@ -9,46 +11,35 @@ import {Annonce, Personne, Vehicule} from "../models";
 })
 
 export class ReserverCovoiturageComponent implements OnInit {
-  annonces : Annonce[];
-  constructor() { }
+  // annonces : Annonce[] = [];
+  annonces:Observable<Annonce[]>;
+  constructor(private _http:HttpClient) { }
 
   ngOnInit() {
-    this.annonces = [];
-    let annonce1;
-    annonce1.placeDispo=0;
-    // annonce1.adresseDepart="Gare de Nantes";
-    // annonce1.adresseArriver="Gare de Saint-Nazaire";
-    //annonce1.heure="";
-    let conducteur1 = new Personne();
-    conducteur1.prenom="François";
-    conducteur1.nom="Georges";
-    annonce1.conducteur=conducteur1;
-    let vehicule1 = new Vehicule();
-    vehicule1.marque="Audi";
-    vehicule1.modele="A6";
-    annonce1.heure = new Date("09/03/2018 08:30");
-    annonce1.vehicule=vehicule1;
-    let annonce2;
-    annonce2.placeDispo=2;
-    // annonce2.adresseDepart="Gare de Nantes";
-    // annonce2.adresseArriver="Gare de Saint-Nazaire";
-    annonce2.heure = new Date("10/03/2018 10:00:00"); 
-    let conducteur2 = new Personne();
-    conducteur2.prenom="Paul";
-    conducteur2.nom="Georges";
-    annonce2.conducteur=conducteur2;
-    let vehicule2 = new Vehicule();
-    vehicule2.marque="Peugeot";
-    vehicule2.modele="5008";
-    annonce2.vehicule=vehicule2;
-    this.annonces.push(annonce1);
-    this.annonces.push(annonce2);
-    //console.log(this.annonces[0].heure.toLocaleString);
-  }
+    this.annonces = this._http.get<Annonce[]>("http://localhost:8080/annonces")}
+    
   public confirmer(annonce:Annonce){
-    if(confirm("Départ : \t" + annonce.adresseDepart + "\nArrivée : \t" + annonce.adresseArriver + "\nHeure : \t" + annonce.heure.toLocaleString()  + "\nVoiture : \t" + annonce.vehicule.marque + " " + annonce.vehicule.modele + "\nChauffeur : \t" + annonce.conducteur.prenom + " " + annonce.conducteur.nom + "\nÊtes-vous sûr de vouloir réserver pour ce covoiturage ?")) {
+    if(confirm("Départ : \t" + annonce.adresseDepart.rue + " " + annonce.adresseDepart.ville + ", " + annonce.adresseDepart.codePostal
+      + "\nArrivée : \t" + annonce.adresseArriver.rue + " " + annonce.adresseArriver.ville + ", " + annonce.adresseArriver.codePostal
+      + "\nHeure : \t" + annonce.heure
+      + "\nVoiture : \t" + annonce.vehicule.marque + " " + annonce.vehicule.modele 
+      + "\nChauffeur : \t" + annonce.conducteur.prenom + " " + annonce.conducteur.nom 
+      + "\nÊtes-vous sûr de vouloir réserver pour ce covoiturage ?")) {
+
       console.log("Réservation covoiturage confirmée");
     }
+    
+    
   }
+  // public filtrerDepart(text:string) {
+  //   console.log("filtrage départ " + text);
+  //   this.annonces.filter(a => a.adresseDepart == text);
+  // }
+  // public filtrerArrivee(text:string) {
+  //   console.log("filtrage arrivée " + text);
+  // }
+  // public filtrerDate(date:Date) {
+  //   console.log("filtrage date " + date);
+  // }
 
 }

@@ -19,10 +19,4 @@ export class ConfirmationAnnonceDialogComponent implements OnInit {
   close() {
     this.dialogRef.close();
   }
-
-  confirme() {
-    
-    this.dialogRef.close();
-  }
-
 }
