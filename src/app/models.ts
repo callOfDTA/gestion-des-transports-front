@@ -4,11 +4,10 @@ export class Annonce {
     adresseDepart:Adresse;
     adresseArriver:Adresse;
     heure:string;
-    conducteur:Personne;
-    duree:Time;
+    duree:string;
     distance:number;
     placeDispo:number;
-    constructor(public vehicule:Vehicule){}
+    constructor(public vehicule:Vehicule, public conducteur:Personne){}
 }
 
 export class Adresse {
@@ -50,7 +49,7 @@ export class Vehicule {
   marque: string;
   modele: string;
   nbPlace: number;
-  photo: string;
+  urlImage: string;
   categorie: Categorie;
   status: StatusVehicule;
   constructor() {}
@@ -60,7 +59,6 @@ export class Personne {
   nom: string;
   prenom: string;
   email: string;
-  telephone: number;
   photo: string;
   matricule: string;
   password: string;

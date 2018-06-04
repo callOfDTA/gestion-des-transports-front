@@ -72,12 +72,16 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-sm">Date / heure *</span>
               </div>
-              <input type="date" name="date" #dateDepart="ngModel" [ngModel]="date" required class="form-control">
+
+              <input type="text" name="jour" #jourDate="ngModel" [(ngModel)]="jour" placeholder="jour" required class="form-control">
+              <input type="text" name="mois" #moisDate="ngModel" [(ngModel)]="mois" placeholder="mois" required class="form-control">
+              <input type="text" name="annee" #anneeDate="ngModel" [(ngModel)]="annee" placeholder="annee" required class="form-control">
+
               <select name="heure" id="heure" #heureDepart="ngModel" [(ngModel)]="heure" required class="form-control">
                   <option *ngFor="let h of heureTable" [value]="h">{{h}}</option> 
               </select>
               <select name="minute" id="minute" #minuteDepart="ngModel" [(ngModel)]="minute" required class="form-control">
-                  <option *ngFor="let m of minuteTable" [value]="h">{{m}}</option> 
+                  <option *ngFor="let m of minuteTable" [value]="m">{{m}}</option> 
               </select>
               <!-- <div *ngIf="date.dirty  && date.invalid">Le modèle est obligatoire.</div> -->
           </div>        

@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <h4>Confirmation de votre proposition :</h4>
+        <h4>Détail de votre proposition :</h4>
     </div>
 
     <div class="row">
@@ -19,12 +19,9 @@
         Nb places disponibles : {{data.annonce.vehicule.nbPlace}}
     </div>
     <div class="row">
-        Date / heure : {{data.annonce.heure | date}}
+        Date / heure : {{data.annonce.heure}}
     </div>
     <div class="float-right">
         <button type="button" (click)="close()" class="btn btn-sm btn-outline-secondary">Fermer</button>
-    </div>
-    <div class="float-right">
-        <button type="button" (click)="confirmer()" class="btn btn-sm btn-outline-secondary">Confirmer</button>
     </div>
 </div>

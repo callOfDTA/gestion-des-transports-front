@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Annonce, Vehicule, Adresse, Personne } from '../models';
+import { Annonce, Vehicule, Adresse, Personne, Role } from '../models';
 import { Router } from '@angular/router';
 import { ReservationService } from '../services/reservation.service';
 import { DEFAULT_RESIZE_TIME } from '@angular/cdk/scrolling';
@@ -14,8 +14,10 @@ import { ConfirmationAnnonceDialogComponent } from '../confirmation-annonce-dial
 export class CreerCovoiturageComponent implements OnInit {
   depart: string = "";
   destination: string = "";
-  annonce:Annonce = new Annonce(new Vehicule());
-  date:string = new Date().toISOString();
+  annonce:Annonce = new Annonce(new Vehicule(), new Personne());
+  jour:string = "";
+  mois:string = "";
+  annee:string = "";
   heure:string = "";
   minute:string = "";
   heureTable:string[] = ["01","02","03","04","05","06","07","08","09","10","11","12"];
@@ -23,7 +25,10 @@ export class CreerCovoiturageComponent implements OnInit {
 
   constructor(private _reservationServ: ReservationService, private router: Router, private dialog: MatDialog) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.annonce.distance = 57;
+    this.annonce.duree = "02:15";
+  }
   
   getAddressDepart(a: any) {
     this.annonce.adresseDepart = new Adresse();
@@ -46,10 +51,19 @@ export class CreerCovoiturageComponent implements OnInit {
   }
 
   submit() {
-    // let dialogRef = this.dialog.open(ConfirmationAnnonceDialogComponent, {
-    //   width: '350px', data: { annonce : this.annonce }
-    // });
-    this.annonce.heure = this.date;
+    this.annonce.heure = `${this.annee}-${this.mois}-${this.jour}T${this.heure}:${this.minute}:00`
+    this.annonce.conducteur.email = "email";
+    this.annonce.conducteur.matricule = "963258741";
+    this.annonce.conducteur.nom = "JeanTOTO";
+    this.annonce.conducteur.prenom = "Eude";
+    this.annonce.conducteur.photo = "jkljlkjlijlkjlj";
+    this.annonce.conducteur.role = Role.CHAUFFEUR;
+    this.annonce.vehicule.urlImage = "toto";
+
+    let dialogRef = this.dialog.open(ConfirmationAnnonceDialogComponent, {
+      width: '350px', data: { annonce : this.annonce}
+    });
+
     this._reservationServ.publierAnnonce(this.annonce)
       .subscribe( a => {
         this.annonce = a;
