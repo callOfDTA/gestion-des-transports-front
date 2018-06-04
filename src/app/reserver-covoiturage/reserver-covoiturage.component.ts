@@ -52,7 +52,7 @@ export class ReserverCovoiturageComponent implements OnInit {
     annonce1.vehicule=vehicule1;
     let annonce2 = new Annonce();
     annonce2.placeDispo=2;
-    annonce2.adresseDepart="Gare de Nantes";
+    annonce2.adresseDepart="Gare de Paris";
     annonce2.adresseArriver="Gare de Saint-Nazaire";
     annonce2.heure = new Date("10/03/2018 10:00:00"); 
     let conducteur2 = new Personne();
@@ -66,11 +66,24 @@ export class ReserverCovoiturageComponent implements OnInit {
     this.annonces.push(annonce1);
     this.annonces.push(annonce2);
     //console.log(this.annonces[0].heure.toLocaleString);
+    console.log(this.annonces.filter(a => a.adresseDepart == "Gare de Paris"))
   }
   public confirmer(annonce:Annonce){
     if(confirm("Départ : \t" + annonce.adresseDepart + "\nArrivée : \t" + annonce.adresseArriver + "\nHeure : \t" + annonce.heure.toLocaleString()  + "\nVoiture : \t" + annonce.vehicule.marque + " " + annonce.vehicule.modele + "\nChauffeur : \t" + annonce.conducteur.prenom + " " + annonce.conducteur.nom + "\nÊtes-vous sûr de vouloir réserver pour ce covoiturage ?")) {
       console.log("Réservation covoiturage confirmée");
     }
+    
+    
+  }
+  public filtrerDepart(text:string) {
+    console.log("filtrage départ " + text);
+    this.annonces.filter(a => a.adresseDepart == text);
+  }
+  public filtrerArrivee(text:string) {
+    console.log("filtrage arrivée " + text);
+  }
+  public filtrerDate(date:Date) {
+    console.log("filtrage date " + date);
   }
 
 }
