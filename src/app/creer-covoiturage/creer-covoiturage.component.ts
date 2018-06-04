@@ -14,7 +14,6 @@ import { ConfirmationAnnonceDialogComponent } from '../confirmation-annonce-dial
 export class CreerCovoiturageComponent implements OnInit {
   depart: string = "";
   destination: string = "";
-
   annonce:Annonce = new Annonce(new Vehicule());
   date:string = new Date().toISOString();
   heure:string = "";
@@ -36,18 +35,6 @@ export class CreerCovoiturageComponent implements OnInit {
     this.depart = `${this.annonce.adresseDepart.rue}, ${this.annonce.adresseDepart.codePostal} ${this.annonce.adresseDepart.ville}`
   }
 
-  submit() {
-    let dialogRef = this.dialog.open(ConfirmationAnnonceDialogComponent, {
-      width: '350px', data: { annonce : this.annonce }
-    });
-    this.annonce.heure = this.date;
-    this._reservationServ.publierAnnonce(this.annonce)
-      .subscribe( a => {
-        this.annonce = a;
-        this.router.navigate(['/collaborateur/annonces'])
-      }, err => console.log(err));
-  }
-
   getAddressArriver(a: any) {
     this.annonce.adresseArriver = new Adresse();
     let adress: string[] = a.formatted_address.split(",");
@@ -56,5 +43,17 @@ export class CreerCovoiturageComponent implements OnInit {
     this.annonce.adresseArriver.codePostal = Number(adress[1]);
     this.annonce.adresseArriver.ville = adress[2];
     this.destination = `${this.annonce.adresseArriver.rue}, ${this.annonce.adresseArriver.codePostal} ${this.annonce.adresseArriver.ville}`
+  }
+
+  submit() {
+    // let dialogRef = this.dialog.open(ConfirmationAnnonceDialogComponent, {
+    //   width: '350px', data: { annonce : this.annonce }
+    // });
+    this.annonce.heure = this.date;
+    this._reservationServ.publierAnnonce(this.annonce)
+      .subscribe( a => {
+        this.annonce = a;
+        this.router.navigate(['/collaborateur/annonces'])
+      }, err => console.log(err));
   }
 }
