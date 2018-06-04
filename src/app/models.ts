@@ -1,25 +1,22 @@
 import { Time } from "@angular/common";
 
 export class Annonce {
-    constructor(
-        public adresseDepart:Adresse,
-        public adresseArriver:Adresse,
-        public heure:string,
-        public vehicule:Vehicule,
-        public conducteur:Personne,
-        public duree:Time,
-        public distance:number,
-        public placeDispo:number){
-    }
+    adresseDepart:Adresse;
+    adresseArriver:Adresse;
+    heure:string;
+    conducteur:Personne;
+    duree:Time;
+    distance:number;
+    placeDispo:number;
+    constructor(public vehicule:Vehicule){}
 }
 
 export class Adresse {
-    constructor(
-        public rue:string,
-        public codePostal:number,
-        public ville:string){
-
-    }
+    rue:string;
+    codePostal:number;
+    ville:string;
+    constructor() {}
+    
     afficher() :string {
         return `${this.rue}, ${this.ville}, ${this.codePostal}`;
     }

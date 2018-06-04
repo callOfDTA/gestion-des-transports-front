@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <h4>Confirmation de votre proposition :</h4>
+    </div>
+
+    <div class="row">
+        Départ : {{data.annonce.adresseDepart | adresse}}
+    </div>
+    <div class="row">
+        Destination : {{data.annonce.adresseArriver | adresse}}
+    </div>
+    <div class="row">
+        Marque : {{data.annonce.vehicule.marque}}
+    </div>
+    <div class="row">
+        Modèle : {{data.annonce.vehicule.modele}}
+    </div>
+    <div class="row">
+        Nb places disponibles : {{data.annonce.vehicule.nbPlace}}
+    </div>
+    <div class="row">
+        Date / heure : {{data.annonce.heure | date}}
+    </div>
+    <div class="float-right">
+        <button type="button" (click)="close()" class="btn btn-sm btn-outline-secondary">Fermer</button>
+    </div>
+    <div class="float-right">
+        <button type="button" (click)="confirmer()" class="btn btn-sm btn-outline-secondary">Confirmer</button>
+    </div>
+</div>

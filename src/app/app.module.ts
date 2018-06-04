@@ -20,6 +20,7 @@ import { VehiculePipe, PersonnePipe, DatePipe, AdressePipe } from './pipe/format
 import { NgxPaginationModule } from 'ngx-pagination';
 import { GoogleplaceDirective } from './googleplace.directive';
 import { FormsModule }   from '@angular/forms';
+import { ConfirmationAnnonceDialogComponent } from './confirmation-annonce-dialog/confirmation-annonce-dialog.component';
 
 const appRoutes: Routes = [
   { path: 'collaborateur/reservations', component: ListerAnnonceComponent },
@@ -43,7 +44,9 @@ const appRoutes: Routes = [
     StatistiqueComponent,
     CreerCovoiturageComponent,
     ReserverCovoiturageComponent,
-    VehiculePipe, PersonnePipe, DatePipe, AdressePipe, GoogleplaceDirective
+    VehiculePipe, PersonnePipe, DatePipe, AdressePipe,
+    GoogleplaceDirective,
+    ConfirmationAnnonceDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,6 @@ const appRoutes: Routes = [
   ],
   providers: [ReservationService],
   bootstrap: [AppComponent],
-  entryComponents:[CourseDialogComponent]
+  entryComponents:[CourseDialogComponent, ConfirmationAnnonceDialogComponent]
 })
 export class AppModule { }

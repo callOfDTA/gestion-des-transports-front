@@ -13,4 +13,8 @@ export class ReservationService {
   lister(matricule:string):Observable<Annonce[]> {
     return this._http.get<Annonce[]>(`${URL_BACKEND}/annonces/passager/${matricule}`);
   }
+
+  publierAnnonce(annonce:Annonce): Observable<Annonce> {
+    return this._http.post<Annonce>(`${URL_BACKEND}/annonces`, annonce);
+  }
 }
