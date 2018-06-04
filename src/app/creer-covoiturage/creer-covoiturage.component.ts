@@ -7,15 +7,15 @@ import { MatDialog, MatDialogRef } from "@angular/material";
 import { ConfirmationAnnonceDialogComponent } from '../confirmation-annonce-dialog/confirmation-annonce-dialog.component';
 
 @Component({
-  selector: 'app-creer-covoiturage',
-  templateUrl: './creer-covoiturage.component.html',
-  styleUrls: ['./creer-covoiturage.component.css']
+  selector: "app-creer-covoiturage",
+  templateUrl: "./creer-covoiturage.component.html",
+  styleUrls: ["./creer-covoiturage.component.css"]
 })
 export class CreerCovoiturageComponent implements OnInit {
+  depart: string = "";
+  destination: string = "";
 
   annonce:Annonce = new Annonce(new Vehicule());
-  depart:string;
-  destination:string;
   date:string = new Date().toISOString();
   heure:string = "";
   minute:string = "";
@@ -24,7 +24,16 @@ export class CreerCovoiturageComponent implements OnInit {
 
   constructor(private _reservationServ: ReservationService, private router: Router, private dialog: MatDialog) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+  
+  getAddressDepart(a: any) {
+    this.annonce.adresseDepart = new Adresse();
+    let adress: string[] = a.formatted_address.split(",");
+    this.annonce.adresseDepart.rue = adress[0];
+    adress = adress[1].split(" ");
+    this.annonce.adresseDepart.codePostal = Number(adress[1]);
+    this.annonce.adresseDepart.ville = adress[2];
+    this.depart = `${this.annonce.adresseDepart.rue}, ${this.annonce.adresseDepart.codePostal} ${this.annonce.adresseDepart.ville}`
   }
 
   submit() {
@@ -39,4 +48,13 @@ export class CreerCovoiturageComponent implements OnInit {
       }, err => console.log(err));
   }
 
+  getAddressArriver(a: any) {
+    this.annonce.adresseArriver = new Adresse();
+    let adress: string[] = a.formatted_address.split(",");
+    this.annonce.adresseArriver.rue = adress[0];
+    adress = adress[1].split(" ");
+    this.annonce.adresseArriver.codePostal = Number(adress[1]);
+    this.annonce.adresseArriver.ville = adress[2];
+    this.destination = `${this.annonce.adresseArriver.rue}, ${this.annonce.adresseArriver.codePostal} ${this.annonce.adresseArriver.ville}`
+  }
 }

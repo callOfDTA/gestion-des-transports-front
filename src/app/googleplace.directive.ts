@@ -1,36 +1,28 @@
-import {Directive, ElementRef, EventEmitter, Output} from '@angular/core';
-import {NgModel} from '@angular/forms';
+/*global google*/
+import { Directive, ElementRef, EventEmitter, OnInit, Output} from '@angular/core';
 
-declare var google:any;
+declare let google:any;
 
 @Directive({
-  selector: '[Googleplace]'
+  selector: "[Googleplace]"
 })
-export class GoogleplaceDirective {
+export class GoogleplaceDirective implements OnInit {
+  @Output() onSelect: EventEmitter<any> = new EventEmitter();
 
-  @Output() setAddress: EventEmitter<any> = new EventEmitter();
-  modelValue:any;
-  autocomplete:any;
-  private _el:HTMLElement;
+  private element: HTMLInputElement;
 
-  constructor(el: ElementRef,private model:NgModel) {
-    this._el = el.nativeElement;
-    this.modelValue = this.model;
-    var input = this._el;
+  constructor(el: ElementRef) {
+    this.element = el.nativeElement;
+  }
 
-    this.autocomplete = new google.maps.places.Autocomplete(input, {});
-    google.maps.event.addListener(this.autocomplete, 'place_changed', ()=> {
-      var place = this.autocomplete.getPlace();
-      this.invokeEvent(place);
-
+  ngOnInit() {
+    const autocomplete = new google.maps.places.Autocomplete(this.element, {
+      types: ['address'],
+      componentRestrictions: {country: 'fr'}
+    });
+    google.maps.event.addListener(autocomplete, 'place_changed', () => {
+      const place = autocomplete.getPlace();
+      this.onSelect.emit(place);
     });
   }
-  invokeEvent(place:Object) {
-    this.setAddress.emit(place);
-  }
-
-  onInputChange() {
-    console.log(this.model);
-  }
-
 }
