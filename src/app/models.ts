@@ -1,6 +1,7 @@
 import { Time } from "@angular/common";
 
 export class Annonce {
+    id:number;
     adresseDepart:Adresse;
     adresseArriver:Adresse;
     heure:string;
@@ -8,6 +9,10 @@ export class Annonce {
     distance:number;
     placeDispo:number;
     constructor(public vehicule:Vehicule, public conducteur:Personne){}
+}
+
+export class Reservation {
+  constructor(public passagerMatricule:string, public annonceID:number){}
 }
 
 export class Adresse {

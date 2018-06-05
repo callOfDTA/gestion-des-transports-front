@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Annonce } from "../models";
+import { Annonce, Reservation} from "../models";
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 const API_URL = environment.apiUrl;
@@ -16,5 +16,9 @@ export class ReservationService {
 
   publierAnnonce(annonce:Annonce): Observable<Annonce> {
     return this._http.post<Annonce>(`${API_URL}/annonces`, annonce);
+  }
+
+  reserver(reservation:Reservation):Observable<Annonce> {
+    return this._http.post<Annonce>(`${API_URL}/annonces/passager`, reservation);
   }
 }
